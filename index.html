@@ -1,0 +1,573 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- lila: #6831e4 -->
+    <!-- átlátszó lila: rgba(104, 49, 228, 0.7) -->
+    <!-- sárga: #f6d446 -->
+    <!-- narancs: #f87a0c -->
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+
+      section {
+        padding-inline: 12px;
+      }
+
+      .button {
+        background: linear-gradient(to right, #f6d446, #f87a0c);
+        border-radius: 100px;
+        padding: 10px 20px;
+        color: white;
+        font-weight: 700;
+        cursor: pointer;
+        letter-spacing: 1px;
+        font-size: large;
+      }
+
+      .button-sec {
+        border-radius: 100px;
+        padding: 10px 20px;
+        color: #6831e4;
+        border-color: #6831e4;
+        border-width: 3px;
+        font-weight: 700;
+        cursor: pointer;
+        letter-spacing: 1px;
+        font-size: large;
+      }
+
+      .button-lila {
+        background: linear-gradient(to right, #5122bf, #6831e4);
+        color: #5122bf;
+        border-radius: 100px;
+        padding: 10px 20px;
+        color: white;
+        font-weight: 700;
+        cursor: pointer;
+        letter-spacing: 1px;
+        font-size: large;
+      }
+
+      h2,
+      .h2 {
+        color: #6831e4;
+        font-weight: 700;
+        font-size: xx-large;
+      }
+
+      h3 {
+        color: #6831e4;
+        font-weight: 700;
+        font-size: large;
+      }
+
+      .card {
+        border-radius: 40px;
+        box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 20px;
+        display: flex;
+        align-items: center;
+        max-width: 960px;
+        margin-inline: auto;
+      }
+
+      @media (max-width: 1024px) {
+        .card {
+          flex-direction: column;
+        }
+
+        .card img {
+          width: 100%;
+        }
+      }
+
+      .input {
+        font-weight: 600;
+        width: 100%;
+        background-color: white;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        padding-left: 12px;
+        border-radius: 8px;
+        margin-bottom: 14px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- nav -->
+    <nav class="text-[#6831e4] font-bold">
+      <div class="max-w-[1240px] mx-auto px-4">
+        <div class="">
+          <div class="flex justify-between space-x-4">
+            <!-- logo -->
+            <div>
+              <a href="#">
+                <img
+                  class="w-28 my-6"
+                  src="assets/logo.svg"
+                  alt="ajándékdoboz, Prizly logója"
+                />
+              </a>
+            </div>
+
+            <!-- primary nav -->
+            <div class="hidden md:flex items-center gap-6">
+              <a href="#jatekok" class="block py-2 text-lg">Játékok</a>
+              <a href="#kapcsolat" class="block py-2 text-lg">Kapcsolat</a>
+              <a href="#regisztracio" class="block py-2 px-4 text-lg button"
+                >Regisztráció</a
+              >
+              <button
+                class="block py-2 px-4 text-sm button-sec"
+                onclick="openModal('modelConfirm')"
+              >
+                Bejelentkezés
+              </button>
+            </div>
+
+            <!-- mobile button goes here -->
+            <div class="md:hidden flex items-center">
+              <button class="mobile-menu-button">
+                <svg
+                  class="w-6 h-6"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M4 6h16M4 12h16M4 18h16"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- mobile menu -->
+      <div class="mobile-menu hidden md:hidden">
+        <a href="#jatekok" class="block py-2 px-4 text-lg">Játékok</a>
+        <a href="#kapcsolat" class="block py-2 px-4 text-lg">Kapcsolat</a>
+        <a
+          href="#regisztracio"
+          class="inline-block ml-2 mt-2 py-2 px-4 text-lg button"
+          >Regisztráció</a
+        >
+        <div>
+          <button
+            class="inline-block ml-2 my-2 py-2 px-4 text-sm button-sec"
+            onclick="openModal('modelConfirm')"
+          >
+            Bejelentkezés
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- hero -->
+    <section class="bg-[#6831e4] md:py-32 py-8">
+      <div
+        class="flex justify-center flex-col-reverse md:flex-row md:gap-20 gap-8"
+      >
+        <img
+          class="max-w-60 md:mx-0 mx-auto"
+          src="assets/logo.svg"
+          alt="ajándékdoboz, Prizly logója"
+        />
+        <div>
+          <h1 class="text-3xl md:text-5xl text-[#f6d446] font-bold">
+            Nyerj könnyedén a Prizlyvel!
+          </h1>
+          <p class="text-white mt-2 mb-6">
+            A Prizlyvel minden nyereményjáték elérhető egy felhasználónévvel
+          </p>
+          <a href="#regisztracio" class="button">Regisztrálok</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- játékok -->
+    <section id="jatekok">
+      <div class="flex justify-center gap-4 pt-20">
+        <img
+          class="w-12 md:block hidden"
+          src="assets/confetti-yl.svg"
+          alt="konfetti díszitőelem"
+        />
+        <h2>Aktuális játékok</h2>
+        <img
+          class="w-12 md:block hidden"
+          src="assets/confetti-yr.svg"
+          alt="konfetti díszitőelem"
+        />
+      </div>
+
+      <div class="card mt-20">
+        <img
+          class="w-1/2"
+          src="assets/minden falat.webp"
+          alt="Nyeremény ajándékok, nyereményjáték banner-je"
+        />
+        <div class="p-12 text-center flex flex-col items-center gap-4">
+          <h3>Penny Tavaszi Promo</h3>
+          <p>
+            Vásárolj legalább 1 db a promócióban részt vevő tibi vagy Roshen
+            terméket a Penny Market magyarországi üzleteiben, küldd be az AP
+            kódot, a blokkot, a vásárlás pontos időpontját és az adataid, így
+            már részt is veszel a napi és a heti nyeremények, valamint a fődíj,
+            az 500.000 Ft értékű PENNY Nyereménykártya sorsolásán is!
+          </p>
+          <p class="font-bold">2026 április 29. - május 27.</p>
+          <a href="#regisztracio" class="button">Részletek</a>
+        </div>
+      </div>
+      <div class="card mt-20">
+        <img
+          class="w-1/2"
+          src="assets/egy falatnyi.webp"
+          alt="Nyeremény ajándékok, nyereményjáték banner-je"
+        />
+        <div class="p-12 text-center flex flex-col items-center gap-4">
+          <h3>LIDL Tavaszi Promo</h3>
+          <p>
+            Vásárolj legalább 1 db a promócióban részt vevő tibi vagy Roshen
+            terméket a LIDL Market magyarországi üzleteiben, küldd be az AP
+            kódot, a blokkot, a vásárlás pontos időpontját és az adataid, így
+            már részt is veszel a napi és a heti nyeremények, valamint a fődíj,
+            az 500.000 Ft értékű PENNY Nyereménykártya sorsolásán is!
+          </p>
+          <p class="font-bold">2026 április 30. - május 27.</p>
+          <a href="#regisztracio" class="button">Részletek</a>
+        </div>
+      </div>
+      <div class="card mt-20">
+        <img
+          class="w-1/2"
+          src="assets/ahol az iz.webp"
+          alt="Nyeremény ajándékok, nyereményjáték banner-je"
+        />
+        <div class="p-12 text-center flex flex-col items-center gap-4">
+          <h3>TESCO Tavaszi Promo</h3>
+          <p>
+            Vásárolj legalább 1 db a promócióban részt vevő tibi vagy Roshen
+            terméket a TESCO Market magyarországi üzleteiben, küldd be az AP
+            kódot, a blokkot, a vásárlás pontos időpontját és az adataid, így
+            már részt is veszel a napi és a heti nyeremények, valamint a fődíj,
+            az 500.000 Ft értékű PENNY Nyereménykártya sorsolásán is!
+          </p>
+          <p class="font-bold">2026 május 07. - június 03.</p>
+          <a href="#regisztracio" class="button">Részletek</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Regisztráció -->
+    <section id="regisztracio">
+      <div>
+        <div class="flex justify-center gap-4 pt-20">
+          <img
+            class="w-12 md:block hidden"
+            src="assets/confetti-yl.svg"
+            alt="konfetti díszitőelem"
+          />
+          <h2>Regisztráció</h2>
+          <img
+            class="w-12 md:block hidden"
+            src="assets/confetti-yr.svg"
+            alt="konfetti díszitőelem"
+          />
+        </div>
+        <p class="h2 text-center">minden nyereményjátékunkhoz</p>
+        <p class="mt-2 text-center max-w-96 mx-auto">
+          A regisztrált felhasználók, pályázat beküldésénél csupán a felhasználó
+          nevüket kell beírják!
+        </p>
+      </div>
+
+      <div
+        class="max-w-[1240px] bg-[#6831e4] rounded-[40px] mx-auto py-20 mt-12 px-12"
+      >
+        <form class="" action="">
+          <div
+            class="flex flex-col md:flex-row items-center max-w-[960px] mx-auto md:gap-12"
+          >
+            <div>
+              <input
+                class="input"
+                type="text"
+                name="vezeteknev"
+                id="vezeteknev"
+                placeholder="Vezetéknév"
+              />
+              <input
+                class="input"
+                type="text"
+                name="keresztnev"
+                id="keresztnev"
+                placeholder="Keresztnév"
+              />
+              <input
+                class="input"
+                type="text"
+                name="iranyitoszam"
+                id="iranyitoszam"
+                placeholder="Irányítószám"
+              />
+              <input
+                class="input"
+                type="text"
+                name="telefonszam"
+                id="telefonszam"
+                placeholder="Telefonszám"
+              />
+            </div>
+            <div>
+              <input
+                class="input"
+                type="text"
+                name="email"
+                id="email"
+                placeholder="E-mail cím"
+              />
+              <input
+                class="input"
+                type="date"
+                name="szuletes"
+                id="szuletes"
+                placeholder="Születési dátum"
+              />
+              <input
+                class="input"
+                type="text"
+                name="password"
+                id="password"
+                placeholder="Jelszó"
+              />
+              <input
+                class="input"
+                type="text"
+                name="password check"
+                id="password check"
+                placeholder="Jelszó mégegyszer"
+              />
+            </div>
+          </div>
+          <div
+            class="max-w-[960px] mx-auto flex md:flex-row flex-col md:items-center text-white gap-4 mt-2"
+          >
+            <div class="flex items-center gap-2">
+              <input
+                type="checkbox"
+                name="adatkezelesi"
+                id="adatkezelesi"
+                class="w-5 h-5 shrink-0"
+              />
+              <label for="adatkezelesi">
+                Elolvastam az
+                <a class="text-[#f6d446] font-bold" href=""
+                  >Adatkezelési tájékoztatót.</a
+                ></label
+              ><br />
+            </div>
+            <div class="flex items-center gap-2">
+              <input
+                type="checkbox"
+                name="hirlevel"
+                id="hirlevel"
+                class="w-5 h-5 shrink-0"
+              />
+              <label for="hirlevel">
+                Szeretnék
+                <a class="text-[#f6d446] font-bold" href=""
+                  >hírlevélben értesülni</a
+                >
+                az aktuális nyereményjátékokról!</label
+              ><br />
+            </div>
+          </div>
+          <button class="button mx-auto block mt-8">Regisztrálok</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Lezárult -->
+    <section>
+      <div class="flex justify-center gap-4 mt-20">
+        <img
+          class="w-12 md:block hidden"
+          src="assets/confetti-yl.svg"
+          alt="konfetti díszitőelem"
+        />
+        <h2>Lezárult játékok</h2>
+        <img
+          class="w-12 md:block hidden"
+          src="assets/confetti-yr.svg"
+          alt="konfetti díszitőelem"
+        />
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="kapcsolat">
+      <div class="bg-[#f6d446]">
+        <div class="flex justify-center gap-4 mt-20 py-12">
+          <img
+            class="w-12 md:block hidden"
+            src="assets/confetti-pl.svg"
+            alt="konfetti díszitőelem"
+          />
+          <h2 class="font-[#6831e4]">Lennének kérdéseid?</h2>
+          <img
+            class="w-12 md:block hidden"
+            src="assets/confetti-pr.svg"
+            alt="konfetti díszitőelem"
+          />
+        </div>
+        <div
+          class="flex flex-col md:flex-row justify-center gap-4 md:gap-12 text-[#6831e4] px-12"
+        >
+          <div class="bg-white text-center p-8 rounded-xl shadow md:w-80">
+            <img
+              class="mx-auto w-6"
+              src="assets/pin.svg"
+              alt="pin showing location"
+            />
+            <h3>Címünk:</h3>
+            <p>1222 Budapest, Borkő utca. 8.</p>
+          </div>
+          <div class="bg-white text-center p-8 rounded-xl shadow md:w-80">
+            <img
+              class="mx-auto w-6"
+              src="assets/pin.svg"
+              alt="pin showing location"
+            />
+            <h3>Email címünk:</h3>
+            <p class="my-4">info@prizly.hu</p>
+            <a class="button-lila" href="mailto:info@prizly.hu">Írj nekünk</a>
+          </div>
+        </div>
+        <img src="assets/people.webp" alt="happy people" />
+      </div>
+      <div
+        class="py-8 px-20 bg-[#6831e4] flex justify-between gap-12 text-white flex-col md:flex-row"
+      >
+        <img
+          class="w-24"
+          src="assets/logo.svg"
+          alt="prizly logó ajándékdoboz"
+        />
+        <p class="max-w-[400px]">
+          Az oldal tartalmainak teljes vagy részleges felhasználása kizárólag a
+          weboldalra történő hivatkozással lehetséges. Minden jog fenntartva.
+        </p>
+        <div>
+          <p class="text-lg font-bold">Kapcsolat</p>
+          <p>info@prizly.hu 1222 Budapest, Borkő utca. 8.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- modal -->
+    <div
+      id="modelConfirm"
+      class="fixed hidden z-50 inset-0 bg-[#6831e4]/80 overflow-y-auto h-full w-full px-4"
+    >
+      <div class="relative top-[30%]">
+        <h2 class="!text-white text-center mb-4">Bejelentkezés</h2>
+        <div class="mx-auto shadow-xl rounded-xl bg-white max-w-md">
+          <div class="flex justify-end p-2">
+            <button
+              onclick="closeModal('modelConfirm')"
+              type="button"
+              class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center hover:cursor-pointer"
+            >
+              <svg
+                class="w-5 h-5"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                  clip-rule="evenodd"
+                ></path>
+              </svg>
+            </button>
+          </div>
+
+          <div class="p-6 pt-0">
+            <form action="">
+              <input
+                class="w-full py-1 px-4 rounded-lg border-3 border-[#6831e4] mb-2"
+                type="text"
+                name="felhasznalonev"
+                id="felhasznalonev"
+                placeholder="Felhasználónév"
+              />
+              <input
+                class="w-full py-1 px-4 rounded-lg border-3 border-[#6831e4] mb-2"
+                type="text"
+                name="jelszo"
+                id="jelszo"
+                placeholder="Jelszó"
+              />
+            </form>
+            <button
+              onclick="closeModal('modelConfirm')"
+              class="button mt-2 mx-auto block"
+            >
+              Bejelentkezés
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script type="text/javascript">
+    window.openModal = function (modalId) {
+      document.getElementById(modalId).style.display = "block";
+      document
+        .getElementsByTagName("body")[0]
+        .classList.add("overflow-y-hidden");
+    };
+
+    window.closeModal = function (modalId) {
+      document.getElementById(modalId).style.display = "none";
+      document
+        .getElementsByTagName("body")[0]
+        .classList.remove("overflow-y-hidden");
+    };
+
+    // Close all modals when press ESC
+    document.onkeydown = function (event) {
+      event = event || window.event;
+      if (event.keyCode === 27) {
+        document
+          .getElementsByTagName("body")[0]
+          .classList.remove("overflow-y-hidden");
+        let modals = document.getElementsByClassName("modal");
+        Array.prototype.slice.call(modals).forEach((i) => {
+          i.style.display = "none";
+        });
+      }
+    };
+  </script>
+  <script>
+    // navigation
+    const btn = document.querySelector("button.mobile-menu-button");
+    const menu = document.querySelector(".mobile-menu");
+
+    btn.addEventListener("click", () => {
+      menu.classList.toggle("hidden");
+    });
+  </script>
+</html>
