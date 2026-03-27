@@ -18,6 +18,15 @@
         padding-inline: 12px;
       }
 
+      input[type="date"] {
+        -webkit-appearance: none;
+        appearance: none;
+        -webkit-text-fill-color: #1f2937;
+        color: #1f2937;
+        width: 100%;
+        box-sizing: border-box;
+      }
+
       .button {
         background: linear-gradient(to right, #f6d446, #f87a0c);
         border-radius: 100px;
@@ -304,6 +313,7 @@
           >
             <div>
               <input
+                required
                 class="input"
                 type="text"
                 name="vezeteknev"
@@ -311,6 +321,7 @@
                 placeholder="Vezetéknév"
               />
               <input
+                required
                 class="input"
                 type="text"
                 name="keresztnev"
@@ -318,6 +329,7 @@
                 placeholder="Keresztnév"
               />
               <input
+                required
                 class="input"
                 type="text"
                 name="iranyitoszam"
@@ -325,6 +337,7 @@
                 placeholder="Irányítószám"
               />
               <input
+                required
                 class="input"
                 type="text"
                 name="telefonszam"
@@ -334,20 +347,29 @@
             </div>
             <div>
               <input
+                required
                 class="input"
                 type="text"
                 name="email"
                 id="email"
                 placeholder="E-mail cím"
               />
+              <div class="flex">
+                <label for="szuletes" class="text-white leading-5"
+                  >Születési dátum</label
+                >
+                <input
+                  required
+                  class="input"
+                  type="date"
+                  name="szuletes"
+                  id="szuletes"
+                  value="2026-01-01"
+                  placeholder="Születési dátum"
+                />
+              </div>
               <input
-                class="input"
-                type="date"
-                name="szuletes"
-                id="szuletes"
-                placeholder="Születési dátum"
-              />
-              <input
+                required
                 class="input"
                 type="text"
                 name="password"
@@ -355,6 +377,7 @@
                 placeholder="Jelszó"
               />
               <input
+                required
                 class="input"
                 type="text"
                 name="password check"
@@ -368,6 +391,7 @@
           >
             <div class="flex items-center gap-2">
               <input
+                required
                 type="checkbox"
                 name="adatkezelesi"
                 id="adatkezelesi"
@@ -382,6 +406,7 @@
             </div>
             <div class="flex items-center gap-2">
               <input
+                required
                 type="checkbox"
                 name="hirlevel"
                 id="hirlevel"
@@ -510,6 +535,7 @@
           <div class="p-6 pt-0">
             <form action="">
               <input
+                required
                 class="w-full py-1 px-4 rounded-lg border-3 border-[#6831e4] mb-2"
                 type="text"
                 name="felhasznalonev"
@@ -517,6 +543,7 @@
                 placeholder="Felhasználónév"
               />
               <input
+                required
                 class="w-full py-1 px-4 rounded-lg border-3 border-[#6831e4] mb-2"
                 type="text"
                 name="jelszo"
